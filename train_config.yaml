@@ -1,0 +1,35 @@
+dataset:
+  path: ./data/
+  name_x_data: quat_10000_32^3.npy
+  name_y_data: sigma_10000_32^3.npy
+model:
+  width: 150
+  depth: 4
+  random_seed: 1
+BCs:
+  material: gamma_tial
+  macro_strain: [1, 0, 0, 0, 0, 0] ## extension along x axis
+optimizer:
+  supervised: False
+  name: 'adam'
+  initial_lr: 5e-3
+  early_stopping: Yes
+  monitor: 'val'
+  patience: 10
+  min_delta: 0
+train:
+  epochs: 1000
+  n_samples: 2
+  sample_for_plotting: 0
+val:
+  n_samples: 2
+  sample_for_plotting: 0
+run:
+  try_cuda: No
+  try_interactive: No
+  parallelism: No
+plotting:
+  stress_component: xx
+  plot_freq: 1
+  results_folder: ./results/
+  plot_sc_estimates: No
