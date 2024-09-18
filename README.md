@@ -3,7 +3,7 @@
 <h3 align="center">Physics-Informed 3D Surrogate for Elastic Fields in Polycrystals</h3>
 
   <p align="center">
-    This repository contains a physics-informed pipeline for surrogate modeling linear elasticity in 3D polycrystalline materials. Once trained, these translation-equivariant models can be exploited to solve ill-posed inverse problems in polycrystalline materials engineering such as crystallographic texture optimization.
+    This repository contains a physics-informed pipeline for surrogate modeling linear elasticity in 3D polycrystalline materials. Once trained, these translation-equivariant models can be exploited to solve ill-posed inverse problems in polycrystalline materials engineering such as crystallographic texture optimization. Our paper is available on .
     <br />
     <br />
   </p>
