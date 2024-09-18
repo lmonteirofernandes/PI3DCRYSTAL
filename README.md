@@ -82,7 +82,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ### Citation
 
-Our paper is available on . Please cite our work with
+Please cite our work with
 ```sh
 @misc{ ,
 	title =  ,
