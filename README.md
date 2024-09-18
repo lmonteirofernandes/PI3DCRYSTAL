@@ -1,10 +1,5 @@
 <div id="top"></div>
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-
-
 <h3 align="center">Physics-Informed 3D Surrogate for Elastic Fields in Polycrystals</h3>
 
   <p align="center">
@@ -14,21 +9,7 @@
   </p>
 </div>
 
-
-### Citation
-
-Our paper is available on . Please cite our work with
-```sh
-@misc{ ,
-	title =  ,
-	author = ,
-	month =  ,
-	year =  }
-  ```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-### Built With
+### Built with
 Our released implementation is tested on:
 * Ubuntu 20.04
 * Python 3.8.18
@@ -99,6 +80,18 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
+### Citation
+
+Our paper is available on . Please cite our work with
+```sh
+@misc{ ,
+	title =  ,
+	author = ,
+	month =  ,
+	year =  }
+  ```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
 ## Contact
