@@ -3,7 +3,7 @@
 <h3 align="center">Physics-Informed 3D Surrogate for Elastic Fields in Polycrystals</h3>
 
   <p align="center">
-    This repository contains a physics-informed pipeline for surrogate modeling linear elasticity in 3D polycrystalline materials. Once trained, these translation-equivariant models can be exploited to solve ill-posed inverse problems in polycrystalline materials engineering such as crystallographic texture optimization. Our paper is available on .
+    This repository contains a physics-informed pipeline for surrogate modeling linear elasticity in 3D polycrystalline materials. Once trained, these translation-equivariant models can be exploited to solve ill-posed inverse problems in polycrystalline materials engineering such as crystallographic texture optimization.
     <br />
     <br />
   </p>
@@ -56,20 +56,6 @@ To train a model you can use the `train.py` script provided.
 The trained models can be tested with the `post_proc.ipynb` notebook.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-If you have any idea that would be useful to implement, please fork the repository and create a pull request. 
-
-1. Fork the repository
-2. Create a branch (`git checkout -b feature/my_feature`)
-3. Commit your changes (`git commit -m 'Add my_feature'`)
-4. Push to the branch (`git push origin feature/my_feature`)
-5. Open a pull request
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- LICENSE -->
