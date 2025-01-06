@@ -66,7 +66,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-<! -- ### Citation
+<!-- ### Citation
 
 Please cite our work with
 ```sh
