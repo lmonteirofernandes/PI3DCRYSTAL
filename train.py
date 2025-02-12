@@ -42,8 +42,6 @@ os.system('mkdir -p '+outdir+'losses')
 os.system('mkdir -p '+outdir+'performance_train')
 os.system('mkdir -p '+outdir+'performance_val')
 os.system('mkdir -p '+outdir+'models')
-os.system('mkdir -p '+outdir+'SC_estimates_train')
-os.system('mkdir -p '+outdir+'SC_estimates_val')
 
 ## Copying input files into output folder
 os.system('cp *.py '+outdir)
@@ -104,18 +102,6 @@ plotcropsvector('sig_xx_fft',sigma_fft_val[config['val']['sample_for_plotting']:
                 config['plotting']['stress_component'], 
                 outdir+'out_fft_val/')
 
-## Self-consistent estimates (not analyzed on the paper)
-if config['plotting']['plot_sc_estimates']==True:
-    SC_load=[config['BCs']['macro_strain'][0],
-            config['BCs']['macro_strain'][3],
-            config['BCs']['macro_strain'][5],
-            config['BCs']['macro_strain'][4],
-            config['BCs']['macro_strain'][2],
-            config['BCs']['macro_strain'][1]]
-
-    SC_plotter(outdir+'SC_estimates_train',quat_train.to('cpu'),sigma_fft_train.to('cpu'),'tetra',config['train']['sample_for_plotting'], SC_load, config['plotting']['stress_component'], 0)
-    SC_plotter(outdir+'SC_estimates_val',quat_val.to('cpu'),sigma_fft_val.to('cpu'),'tetra',config['val']['sample_for_plotting'], SC_load, config['plotting']['stress_component'], 0)
-
 ## Initializing kernels for finite differences via convolutions
 kernel_x_grad,kernel_y_grad,kernel_z_grad=fd_kernels()
 kernel_x_div,kernel_y_div,kernel_z_div=bd_kernels()
@@ -154,25 +140,25 @@ eps_macro=torch.tensor([
                 [config['BCs']['macro_strain'][2],config['BCs']['macro_strain'][4],config['BCs']['macro_strain'][5]]],dtype=gettensorprecision(precision),requires_grad=False).to(device)
 
 ## Architecture parameters
-# Width: number of convolutional filters used inside the residual blocks
-width=config['model']['width']
-# Depth: number of residual blocks
-depth=config['model']['depth']
-# Number of epochs (times the entire dataset will be "seen")
+nf1=int(config['model']['nf1'])
+nf2=int(config['model']['nf2'])
+nf3=int(config['model']['nf3'])
+nf4=int(config['model']['nf4'])
+## Number of epochs (times the entire dataset will be "seen")
 n_epochs=config['train']['epochs']
-# Early stopping: stop the model when it no longer performs better on validation data than the previous epochs
+## Early stopping: stop the model when it no longer performs better on validation data than the previous epochs
 early_stopping=config['optimizer']['early_stopping']
-# Patience: how many epoch to wait before stopping
+## Patience: how many epoch to wait before stopping
 patience=config['optimizer']['patience']
-# Minimum delta: minimum performance gain to characterize a significant improvement
+## Minimum delta: minimum performance gain to characterize a significant improvement
 min_delta=config['optimizer']['min_delta']
-# Initial learning rate
+## Initial learning rate
 lr=float(config['optimizer']['initial_lr'])
-# Plotting frequency
+## Plotting frequency
 plot_freq=config['plotting']['plot_freq']
 
 ## Initializing model
-model=physicsinformed3Dresnet(kernels_grad,C0_4,eps_macro,width,depth)
+model=physicsinformed3Dresnet_custom(kernels_grad,C0_4,eps_macro,nf1,nf2,nf3,nf4)
 
 ## Calculating and saving number of parameters
 model_parameters = filter(lambda p: p.requires_grad, model.parameters())
@@ -213,9 +199,6 @@ train_loss_list=[]
 val_loss_list=[]
 train_error_list=[]
 val_error_list=[]
-
-## Start clock
-t0 = time.time()
 
 ## Training loop:
 memory=0
@@ -374,10 +357,4 @@ for epoch in range(n_epochs):
                 break
         else:
             print('Early stopper monitor not recognized')
-    
-## Stop clock and save training time
-t1 = time.time()
-total_time=t1-t0
-f = open(outdir+"training_time.txt", "w")
-f.write("The training lasted  "+convert_time(total_time))
-f.close()
+
