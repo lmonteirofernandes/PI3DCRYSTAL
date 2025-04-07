@@ -66,18 +66,24 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-<!-- ### Citation
+### Citation
 
 Please cite our work with
 ```sh
-@misc{ ,
-	title =  ,
-	author = ,
-	month =  ,
-	year =  }
+@article{monteiro_fernandes_physics-informed_2025,
+	title = {A physics-informed {3D} surrogate model for elastic fields in polycrystals},
+	volume = {441},
+	issn = {0045-7825},
+	doi = {10.1016/j.cma.2025.117944},
+	journal = {Computer Methods in Applied Mechanics and Engineering},
+	author = {Monteiro Fernandes, Lucas and Blusseau, Samy and Rieder, Philipp and Neumann, Matthias and Schmidt, Volker and Proudhon, Henry and Willot, François},
+	month = jun,
+	year = {2025},
+	pages = {117944},
+}
   ```
 
-<p align="right">(<a href="#top">back to top</a>)</p> -->
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
 ## Contact
